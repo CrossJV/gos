@@ -11,13 +11,13 @@ export default function Auth() {
         state.getProfile
     ]);
 
-    const formHandler = async (evt: BaseSyntheticEvent) => {
+    const formHandler = (evt: BaseSyntheticEvent) => {
         evt.preventDefault();
         const login = evt.currentTarget.elements[0].value;
         const password = evt.currentTarget.elements[1].value;
 
-        await signIn(login, password);
-        await getProfile(login);
+        signIn(login, password);
+        getProfile(login);
 
         navigate('/')
     }
