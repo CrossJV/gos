@@ -1,0 +1,66 @@
+.menu {
+    transition: all .3s;
+    background: #303952;
+    max-width: 140px;
+    width: 180px;
+    height: 100vh;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-header {
+    
+}
+
+.menu-user-name {
+    color: rgb(168, 174, 191);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 30px 10px;
+}
+
+.logout-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    color: rgb(255, 255, 255);
+    background-color: #576793;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 15px;
+}
+
+.nav-link {
+    color: rgb(168, 174, 191);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 2%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: rgb(255, 255, 255);
+}
+
+.nav-link-active {
+    color: rgb(255, 255, 255);
+}
+

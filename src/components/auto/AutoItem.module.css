@@ -1,0 +1,20 @@
+.auto-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 35px;
+    background-color: #f7f8f9;
+    margin-bottom: 10px;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #e3e8ed
+}
+
+.delete-button {
+    color: #fff;
+    background-color: #fd6262;
+}
+
+.auto-list-inner {
+    width: 200px;
+    text-align: center;
+}

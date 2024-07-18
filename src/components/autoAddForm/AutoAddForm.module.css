@@ -1,0 +1,28 @@
+.auto-form-input {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+    width: 100%;
+    height: 27px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    border: 1px solid #d4d4d4;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.auto-form-label {
+    font-weight: 600;
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.auto-form-submit {
+    margin-top: 10px;
+    color: #fff;
+    background-color: #13c4a5;
+}
