@@ -8,13 +8,17 @@ const data = [
     {
         login:"CrossJV",
         password:"123456",
+        autos:[{id:1,autoNumber:"А231БП333",name:"Пупкин",address:"Тореза 22",phone:"89993332112"}],
         isLogined:false,
-        autos:[{id:1,autoNumber:"А231БП333",name:"Пупкин",address:"Тореза 22",phone:"89993332112"}]},
+        
+    },
     {
         login:"metwisom",
         password:"09876",
+        autos:[],
         isLogined:false,
-        autos:[]}
+        
+    }
 ]
 export const useAuthStore = create(persist<AuthState & AuthActions>((set) => ({
         token: null,
@@ -26,20 +30,21 @@ export const useAuthStore = create(persist<AuthState & AuthActions>((set) => ({
 
             if(user) {
                 const token = login + password;
-                set((state) => ({
-                    token,
+                set(() => ({
+                    token: token,
                     isAuth: !!token
                 }))
             }
         },
         getProfile: async (login: string) => {
-            const profile = data.filter((user: UserProps) => user.login === login);
-
+            const profile = data.filter((user: UserProps) => user.login === login)[0];
+            
             set(() => ({
                 profile: profile
             }))
         },
-        logout: () => set(() => ({token: null, profile: null, isAuth: false}))
+        logout: () => set(() => ({token: null, profile: null, isAuth: false})),
+        cleanErrors: () => {}
     }),
     {
         name: 'auth'

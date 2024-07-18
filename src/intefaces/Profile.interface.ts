@@ -1,5 +1,6 @@
 export interface Profile {
     login: string,
     password: string,
-    autos: [],
+    autos: any,
+    isLogined: boolean
 }

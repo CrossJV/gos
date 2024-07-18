@@ -1,8 +1,8 @@
-import {Profile} from "./Profile.interface.ts";
+import UserProps from "./UserProps.interface.ts";
 
 export interface AuthState {
-    token: string,
-    profile: Profile,
+    token: string | null,
+    profile: UserProps | null,
     isAuth: boolean,
     errors: any
 }

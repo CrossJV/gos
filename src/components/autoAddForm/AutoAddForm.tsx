@@ -17,7 +17,7 @@ const prefixNumber = (str: string) => {
     return "7 (";
 };
 
-function phoneMask(event)
+function phoneMask(event: any)
 {
     const value = event.target.value.replace(/\D+/g, "");
     const numberLength = 11;

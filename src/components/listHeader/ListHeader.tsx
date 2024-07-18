@@ -2,7 +2,7 @@ import styles from './ListHeader.module.css';
 import cn from "classnames";
 import {useNavigate} from "react-router-dom";
 
-export default function ListHeader(names) {
+export default function ListHeader(names: { names: string[]}) {
     const navigate = useNavigate();
 
     return (
