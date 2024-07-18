@@ -5,7 +5,8 @@ import {useAuthStore} from "../../store/auth_zu.ts";
 
 export default function Menu() {
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem('auth')!).state.profile[0].login;
+    const user = JSON.parse(localStorage.getItem('auth')!).state.profile.login;
+    console.log(user);
     const logout = useAuthStore((state) => state.logout)
 
     return (
