@@ -14,14 +14,14 @@ export default function Auth() {
         state.errors
     ]);
 
-    const formHandler = (evt: BaseSyntheticEvent) => {
+    const formHandler = async (evt: BaseSyntheticEvent) => {
         evt.preventDefault();
         const login = evt.currentTarget.elements[0].value;
         const password = evt.currentTarget.elements[1].value;
 
-        signIn(login, password);
-        if(isAuth) {
-            getProfile(login);
+        await signIn(login, password);
+        if(!errors) {
+            await getProfile(login);
 
             navigate('/')
         }

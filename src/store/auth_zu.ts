@@ -25,7 +25,7 @@ export const useAuthStore = create(persist<AuthState & AuthActions>((set) => ({
         profile: null,
         isAuth: false,
         errors: null,
-        signIn: (login: string, password: string) => {
+        signIn: async (login: string, password: string) => {
             const user = data.filter((user: UserProps) => user.login === login && user.password === password);
 
             if(user.length > 0) {
@@ -40,7 +40,7 @@ export const useAuthStore = create(persist<AuthState & AuthActions>((set) => ({
                 }))
             }
         },
-        getProfile: (login: string) => {
+        getProfile: async (login: string) => {
             const profile = data.filter((user: UserProps) => user.login === login)[0];
             
             set(() => ({
