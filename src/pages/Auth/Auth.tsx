@@ -6,9 +6,12 @@ import {useAuthStore} from "../../store/auth_zu.ts";
 
 export default function Auth() {
     const navigate = useNavigate();
-    const [signIn, getProfile] = useAuthStore((state) => [
+    const [signIn, getProfile, clearError, isAuth, errors] = useAuthStore((state) => [
         state.signIn,
-        state.getProfile
+        state.getProfile,
+        state.cleanErrors,
+        state.isAuth,
+        state.errors
     ]);
 
     const formHandler = (evt: BaseSyntheticEvent) => {
@@ -17,9 +20,11 @@ export default function Auth() {
         const password = evt.currentTarget.elements[1].value;
 
         signIn(login, password);
-        getProfile(login);
+        if(isAuth) {
+            getProfile(login);
 
-        navigate('/')
+            navigate('/')
+        }
     }
 
     return (
@@ -29,15 +34,18 @@ export default function Auth() {
                 <h1 className={cn(styles['auth-form-head'])} id="signheader">Вход в систему</h1>
                 <label className={cn(styles['auth-form-label'])}>Логин
                     <input className={cn(styles['auth-form-input'])}
+                           onChange={clearError}
                            autoComplete="off"
                            placeholder="Имя пользователя"/>
                 </label>
                 <label className={cn(styles['auth-form-label'])}>Пароль
                     <input className={cn(styles['auth-form-input'])}
+                           onChange={clearError}
                            autoComplete="off"
                            type="password"
                            placeholder="Пароль"/>
                 </label>
+                {errors && <div className={cn(styles['error-message'])}>{errors.message}</div>}
                 <button className={cn(styles['auth-form-submit'])}>Войти</button>
             </form>
         </div>

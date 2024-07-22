@@ -28,11 +28,15 @@ export const useAuthStore = create(persist<AuthState & AuthActions>((set) => ({
         signIn: (login: string, password: string) => {
             const user = data.filter((user: UserProps) => user.login === login && user.password === password);
 
-            if(user) {
+            if(user.length > 0) {
                 const token = login + password;
                 set(() => ({
                     token: token,
                     isAuth: !!token
+                }))
+            } else {
+                set(() => ({
+                    errors: {code: 401, message: 'Неверный логин или пароль'}
                 }))
             }
         },
@@ -44,7 +48,7 @@ export const useAuthStore = create(persist<AuthState & AuthActions>((set) => ({
             }))
         },
         logout: () => set(() => ({token: null, profile: null, isAuth: false})),
-        cleanErrors: () => {}
+        cleanErrors: () => set(() => ({errors: null}))
     }),
     {
         name: 'auth'
