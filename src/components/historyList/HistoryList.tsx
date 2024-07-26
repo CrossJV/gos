@@ -3,6 +3,7 @@ import AutoItem from "../auto/AutoItem.tsx";
 import cn from "classnames";
 import styles from "../autoList/AutoList.module.css";
 import ListHeader from "../listHeader/ListHeader.tsx";
+import {HeadersProps} from "../../intefaces/HeadersProps.ts";
 
 const MOCKS: AutoItemProps[] = [
     {
@@ -79,7 +80,14 @@ const MOCKS: AutoItemProps[] = [
     },
 ]
 
-const headers = ['№', 'Номер', 'Имя', 'Адрес', 'Телефон', 'Фото'];
+const headers: HeadersProps[] = [
+                                    {LABEL: '№'},
+                                    {KEY: '', LABEL: 'Номер'},
+                                    {KEY: '', LABEL: 'Имя'},
+                                    {KEY: '', LABEL: 'Адрес'},
+                                    {KEY: '', LABEL: 'Телефон'},
+                                    {LABEL: 'Фото'}
+                                ];
 
 export default function HistoryList() {
     return (

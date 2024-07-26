@@ -19,7 +19,6 @@ export default function AutoList() {
         getAutos();
     }, []);
 
-    console.log(autos);
     return (
         <div className={cn(styles['list-wrapper'])}>
             <ListHeader names = {headers}/>

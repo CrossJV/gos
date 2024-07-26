@@ -1,8 +1,11 @@
+import { useState } from "react";
 import AutoItemProps from "../../intefaces/AutoItemProps.interface.ts";
 import styles from './AutoItem.module.css';
 import cn from 'classnames';
 
 export default function AutoItem(data: AutoItemProps) {
+    const [showDel, setShowDel] = useState(false);
+
     return (
         <li className={cn(styles['auto-list-item'])} key={data.id}>
             <div className={cn(styles['auto-list-inner'])}>{data.index}</div>
@@ -11,9 +14,14 @@ export default function AutoItem(data: AutoItemProps) {
             <div className={cn(styles['auto-list-inner'])}>{data.address}</div>
             <div className={cn(styles['auto-list-inner'])}>{data.phone}</div>
             <div className={cn(styles['auto-list-inner'])}>
-                {data.img ? <img src={data.img} width={100} height={100} alt={'photo-img'}/> : <button className={cn(styles['delete-button'])} onClick={data.handler}>
+                {data.img ? <img src={data.img} width={100} height={100} alt={'photo-img'}/> : !showDel ? <button className={cn(styles['delete-button'])} onClick={() => { setShowDel(true) }}>
                     Удалить
-                </button>}
+                </button> : 
+                <div className={cn(styles['confirm-wrapper'])}>
+                    <button onClick={data.handler} className={cn(styles['accept-button'], styles['confirm-button'])}><img src="check.svg" width={20} /></button>
+                    <button onClick={() => { setShowDel(false) }} className={cn(styles['delete-button'], styles['confirm-button'])}><img src="cancel.svg" width={20} /></button>
+                </div>
+                }
             </div>
         </li>
     )

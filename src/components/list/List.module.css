@@ -1,0 +1,29 @@
+.list-wrapper {
+    width: 100%;
+    padding: 10px 25px;
+}
+
+.list-header {
+    background: #a7b2be;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 35px;
+    margin-bottom: 10px;
+    border: 1px solid #e3e8ed;
+    width: 100%;
+}
+
+.list-header-inner {
+    width: 200px;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.add-button {
+    color: #fff;
+    background-color: #13c4a5;
+}

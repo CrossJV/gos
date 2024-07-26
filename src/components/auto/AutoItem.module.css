@@ -9,9 +9,33 @@
     border: 1px solid #e3e8ed
 }
 
+.accept-button {
+    height: 40px;
+    color: #fff;
+    background-color: #13c4a5;
+}
+
 .delete-button {
+    height: 40px;
     color: #fff;
     background-color: #fd6262;
+}
+
+.confirm-button {
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-wrapper {
+    height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    margin: 0 auto;
 }
 
 .auto-list-inner {
