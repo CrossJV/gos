@@ -3,12 +3,38 @@ import cn from 'classnames';
 import {useNavigate} from "react-router-dom";
 import AutoItem from "../auto/AutoItem.tsx";
 import AutoItemProps from "../../intefaces/AutoItemProps.interface.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {HeadersProps} from "../../intefaces/HeadersProps.ts";
 
 export default function List({ headers, items }) {
     const [sort, setSort] = useState({ keyToSort: '', direction: 'asc' });
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let found = [];
+        
+        if(searchTerm !== "") {
+            items.forEach((obj) => {
+                for(let item in obj) {
+                    if (String(obj[item]).includes(searchTerm)) {
+                        if(!found.includes(obj)) {
+                            found.push(obj);
+                        }
+                    }
+                };
+            });
+        } else {
+            found = [...items];
+        }
+
+        setSearchResults([...found]);
+    }, [searchTerm]);
+
+    function handleChange(event) {
+        setSearchTerm(event.target.value);
+     };
 
     function handlerHeader(header: HeadersProps) {
         setSort({
@@ -31,6 +57,13 @@ export default function List({ headers, items }) {
 
     return (
         <div className={cn(styles['list-wrapper'])}>
+            <input
+                className={cn(styles['search-input'])}
+                type="text"
+                placeholder="Поиск"
+                value={searchTerm}
+                onChange={handleChange}
+            />
             <div className={cn(styles['list-header'])}>
                 {headers && headers.map(name => {
                     return name.LABEL !== 'add'
@@ -48,7 +81,7 @@ export default function List({ headers, items }) {
                 }
             </div>
             <ul>
-                {items && getSortedData(items).map((item: AutoItemProps, index) => {
+                {searchResults && getSortedData(searchResults).map((item: AutoItemProps, index) => {
                     return (
                         <AutoItem key={item.id}
                                   index={index + 1}

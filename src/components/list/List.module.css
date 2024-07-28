@@ -27,3 +27,11 @@
     color: #fff;
     background-color: #13c4a5;
 }
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #e3e8ed;
+}
