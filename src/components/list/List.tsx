@@ -14,7 +14,7 @@ export default function List({ headers, items }) {
 
     useEffect(() => {
         let found = [];
-        
+
         if(searchTerm !== "") {
             items.forEach((obj) => {
                 for(let item in obj) {
@@ -30,7 +30,7 @@ export default function List({ headers, items }) {
         }
 
         setSearchResults([...found]);
-    }, [searchTerm]);
+    }, [items, searchTerm]);
 
     function handleChange(event) {
         setSearchTerm(event.target.value);

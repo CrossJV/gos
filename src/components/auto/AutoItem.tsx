@@ -2,8 +2,12 @@ import { useState } from "react";
 import AutoItemProps from "../../intefaces/AutoItemProps.interface.ts";
 import styles from './AutoItem.module.css';
 import cn from 'classnames';
+import { useAutoStore } from "../../store/autos_zu.ts";
 
 export default function AutoItem(data: AutoItemProps) {
+    const [delAuto] = useAutoStore((state) => [
+        state.deleteAuto
+    ])
     const [showDel, setShowDel] = useState(false);
 
     return (
@@ -18,7 +22,7 @@ export default function AutoItem(data: AutoItemProps) {
                     Удалить
                 </button> : 
                 <div className={cn(styles['confirm-wrapper'])}>
-                    <button onClick={data.handler} className={cn(styles['accept-button'], styles['confirm-button'])}><img src="check.svg" width={20} /></button>
+                    <button onClick={() => { delAuto(data.id) }} className={cn(styles['accept-button'], styles['confirm-button'])}><img src="check.svg" width={20} /></button>
                     <button onClick={() => { setShowDel(false) }} className={cn(styles['delete-button'], styles['confirm-button'])}><img src="cancel.svg" width={20} /></button>
                 </div>
                 }

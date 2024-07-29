@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { HeadersProps } from "../../intefaces/HeadersProps.ts";
 import { useAutoStore } from "../../store/autos_zu.ts";
 import List from "../../components/list/List.tsx";
@@ -12,26 +11,17 @@ const headers: HeadersProps[] = [
     {LABEL: 'add'}
 ];
 
-export default function Auto() {
-    const [autos, getAutos, deleteAuto] = useAutoStore((state) => [
-        state.autos,
-        state.getAutos,
-        state.deleteAuto
-    ]);
+useAutoStore.getState().getAutos();
 
-    let auto_data
-    useEffect(() => {
-        getAutos();
-    }, []);
-    
+export default function Auto() {
+    console.log('rerender AUTO')
+    const [autos] = useAutoStore((state) => [
+        state.autos
+    ])
+
     return (
         <>
-            <List headers={headers} items={auto_data = autos.map(auto => {
-            return {
-                ...auto,
-                handler: () => { deleteAuto(auto.id) }
-            }
-            })} />
+            {<List headers={headers} items={autos} />}
         </>
     )
 }

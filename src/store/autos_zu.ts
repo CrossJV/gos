@@ -32,6 +32,9 @@ export const useAutoStore = create<AutosState & AutosActions>((set) => ({
         }];
 
         localStorage.setItem('auth', JSON.stringify(data));
+        set(() => ({
+            autos: data.state.profile.autos
+        }))
     },
     deleteAuto: (id: number) => {
         const data = JSON.parse(localStorage.getItem('auth')!);
@@ -41,8 +44,10 @@ export const useAutoStore = create<AutosState & AutosActions>((set) => ({
         })
 
         localStorage.setItem('auth', JSON.stringify(data));
-        set(() => ({
-            autos: data.state.profile.autos
+        set((state) => ({
+            autos: state.autos.filter((elem : AutoItemProps) => {
+                return elem.id != id
+            })
         }))
     }
 }))
